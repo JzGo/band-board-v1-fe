@@ -22,6 +22,14 @@
   font-size: large;
 }
 
+.navbar {
+  margin-bottom: 0px;
+}
+
+#welcome {
+  padding: 25vh;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
