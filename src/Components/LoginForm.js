@@ -1,7 +1,7 @@
 import React,  { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
-  Checkbox,
   Col,
   ControlLabel,
   Form,
@@ -9,6 +9,7 @@ import {
   FormGroup
 } from 'react-bootstrap'
 import AuthService from '../services/AuthService';
+import RegisterForm from '../Components/RegisterForm';
 
 export default class LoginForm extends Component {
   constructor() {
@@ -28,9 +29,9 @@ export default class LoginForm extends Component {
     e.preventDefault()
     this.Auth.login(this.state.email, this.state.password)
     .then(res => {
-      this.props.history.replace('/')
+      this.props.history.replace('/member')
     })
-      .catch(err => { alert(err) })
+    .catch(err => { alert(err) })
   }
 
   render() {
@@ -58,9 +59,15 @@ export default class LoginForm extends Component {
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Button type="submit">Sign in</Button>
+            <br/><br/>
+
+            <Link to='/register' component={ RegisterForm } >Not Registered?</Link>
+  
           </Col>
+   
         </FormGroup>
-      </Form>
+
+  </Form>
     )
   }
 }

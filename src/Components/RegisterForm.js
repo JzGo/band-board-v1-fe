@@ -1,7 +1,6 @@
 import React,  { Component } from 'react';
 import {
   Button,
-  Checkbox,
   Col,
   ControlLabel,
   Form,
