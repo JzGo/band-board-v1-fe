@@ -22,6 +22,25 @@ export default class AuthService {
     })
   }
 
+  register(username, email, password, password_confirmation) {
+    return this.fetch(`${this.domain}/users`, {
+      method: 'POST',
+      body: JSON.stringify({
+        user: {
+          username,
+          email,
+          password,
+          password_confirmation
+        }
+      })
+    }).then(res => {
+      this.setToken(res.jwt)
+      return Promise.resolve(res);
+    })
+  }
+
+
+
   loggedIn() {
     const token = this.getToken()
     return !!token && !this.isTokenExpired(token)

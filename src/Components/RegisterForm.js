@@ -28,7 +28,7 @@ export default class RegisterForm extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault()
-    this.Auth.login(this.state.email, this.state.password)
+    this.Auth.register(this.state.username, this.state.email, this.state.password, this.state.password_confirmation)
     .then(res => {
       this.props.history.replace('/')
     })
