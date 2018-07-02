@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Nav,
   Navbar,
@@ -18,7 +19,9 @@ export default class Navigation extends Component {
         <Navbar.Collapse>
           <Nav pullRight>
             <NavItem eventKey={1} href="#">
-              Login | Register
+              <Link to="/login">
+                Login | Register
+              </Link>
             </NavItem>
             <NavItem eventKey={2} href="#">
               Logout

@@ -10,6 +10,11 @@ import {
 } from 'react-bootstrap'
 
 export default class LoginForm extends Component {
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
     return (
       <Form horizontal>
