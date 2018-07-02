@@ -8,23 +8,43 @@ import {
   FormControl,
   FormGroup
 } from 'react-bootstrap'
+import AuthService from '../services/AuthService';
 
 export default class LoginForm extends Component {
+  constructor() {
+    super()
+    this.Auth = new AuthService()
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
 
   handleChange(e) {
+    console.log('updating')
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleFormSubmit(e) {
+    e.preventDefault()
+    console.log('submitting')
+    this.Auth.login(this.state.email, this.state.password)
+    .then(res => {
+      this.props.history.replace('/')
+    })
+      .catch(err => { alert(err) })
   }
 
   render() {
     return (
-      <Form horizontal>
+      <Form horizontal onSubmit={this.handleFormSubmit.bind(this)}>
 
         <FormGroup controlId="formHorizontalEmail">
           <Col componentClass={ControlLabel} sm={2}>
             Email
           </Col>
           <Col sm={10}>
-            <FormControl type="email" placeholder="Email" />
+            <FormControl name="email" type="email" placeholder="Email" onChange={this.handleChange.bind(this)} />
           </Col>
         </FormGroup>
 
@@ -33,7 +53,7 @@ export default class LoginForm extends Component {
             Password
           </Col>
           <Col sm={10}>
-            <FormControl type="password" placeholder="Password" />
+            <FormControl name="password" type="password" placeholder="Password" onChange={this.handleChange.bind(this)} />
           </Col>
         </FormGroup>
 
