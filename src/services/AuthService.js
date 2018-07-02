@@ -8,7 +8,6 @@ export default class AuthService {
   }
 
   login(email, password) {
-    console.log(`requesting ${this.domain}/user_token with ${email} and ${password}`)
     return this.fetch(`${this.domain}/user_token`, {
       method: 'POST',
       body: JSON.stringify({
@@ -59,7 +58,6 @@ export default class AuthService {
   }
 
   fetch(url, options) {
-    console.log("fetch url: ", url)
     const headers  = {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -78,7 +76,6 @@ export default class AuthService {
   }
 
   _checkStatus(response) {
-    console.log('response body', response.body)
     if (response.status >= 200 && response.status < 300) {
       return response
     } else {

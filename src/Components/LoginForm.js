@@ -21,13 +21,11 @@ export default class LoginForm extends Component {
   }
 
   handleChange(e) {
-    console.log('updating')
     this.setState({ [e.target.name]: e.target.value })
   }
 
   handleFormSubmit(e) {
     e.preventDefault()
-    console.log('submitting')
     this.Auth.login(this.state.email, this.state.password)
     .then(res => {
       this.props.history.replace('/')
